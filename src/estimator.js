@@ -33,8 +33,11 @@ const severeImpact = {
   dollarsInFlight: (((((data.reportedCases * 10) * 1024) * 0.65) * 1.5) * 30)
 };
 
-const covid19ImpactEstimator = (estimatorData) => {
-  estimatorData;
+const estimatorData = {
+  data,
+  impact,
+  severeImpact
 };
+const covid19ImpactEstimator = () => estimatorData;
 
 export default covid19ImpactEstimator;
