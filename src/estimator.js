@@ -1,26 +1,11 @@
-const data = {
-    region: {
-        name: "Africa",
-        avgAge: 19.7,
-        avgDailyIncomeInUSD: 5,
-        avgDailyIncomePopulation: 0.71
-    },
-    periodType: "days",
-    timeToElapse: 58,
-    reportedCases: 674,
-    population: 66622705,
-    totalHospitalBeds: 1380614
-};
+/* eslint-disable linebreak-style */
+import { data, impact, severeImpact } from './data';
 
-const estimator = {
-    reportedCases: data.reportedCases,
-    currentlyInfected: reportedCases * 10,
-    scurrentlyInfected: reportedCases * 50,
-    infectionsByRequestedTime: currentlyInfected * 1024,
-    infectionsByRequestedTime: scurrentlyInfected * 1024,
-    
+const estimatorData = {
+  data,
+  impact,
+  severeImpact
 };
-
-const covid19ImpactEstimator = (data) => data;
+const covid19ImpactEstimator = () => estimatorData;
 
 export default covid19ImpactEstimator;
