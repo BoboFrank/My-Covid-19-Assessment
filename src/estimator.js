@@ -1,5 +1,5 @@
 /* eslint-disable linebreak-style */
-const estimate = {
+/* const estimate = {
   region: {
     name: 'Africa',
     avgAge: 19.7,
@@ -11,7 +11,7 @@ const estimate = {
   reportedCases: 674,
   population: 66622705,
   totalHospitalBeds: 1380614
-};
+}; */
 
 const covid19ImpactEstimator = (data) => {
   class Data {
@@ -28,9 +28,9 @@ const covid19ImpactEstimator = (data) => {
     }
   }
   return {
-    data,
-    impact: new Data(estimate, 10, estimate.totalHospitalBeds),
-    severeImpact: new Data(estimate, 50, estimate.totalHospitalBeds)
+    input: data,
+    impact: new Data(data, 10, data.totalHospitalBeds),
+    severeImpact: new Data(data, 50, data.totalHospitalBeds)
   };
 };
 
