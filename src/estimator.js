@@ -18,7 +18,7 @@ const covid19ImpactEstimator = (data) => {
     constructor(est, num) {
       this.currentlyInfected = (est.reportedCases * num);
       this.totalHospitalBeds = est.totalHospitalBeds;
-      this.factors = (2 ** est.timeToElapse);
+      this.factors = (2 ** (est.timeToElapse / 3));
       this.infectionsByRequestedTime = (this.currentlyInfected * this.factors);
       this.severeCasesByRequestedTime = (this.infectionsByRequestedTime * 0.15);
       // eslint-disable-next-line max-len
