@@ -1,36 +1,45 @@
 /* eslint-disable linebreak-style */
-const data = {
+/* export const estimate = {
   region: {
     name: 'Africa',
     avgAge: 19.7,
-    avgDailyIncomeInUSD: 5,
-    avgDailyIncomePopulation: 0.71
+    avgDailyIncomeInUSD: 5.50,
+    avgDailyIncomePopulation: 0.85
   },
   periodType: 'days',
-  timeToElapse: 58,
+  timeToElapse: 30,
   reportedCases: 674,
   population: 66622705,
   totalHospitalBeds: 1380614
 };
 
-const impact = {
-  currentlyInfected: (data.reportedCases * 10),
-  infectionByRequestedTime: ((data.reportedCases * 10) * 1024),
-  casesByRequestedTime: (((data.reportedCases * 10) * 1024) * 0.15),
-  hospitalBedByRequestedTime: ((((data.reportedCases * 10) * 1024) * 0.15) * 0.35),
-  casesForICUByRequestedTime: (((data.reportedCases * 10) * 1024) * 0.05),
-  casesForVentilatorsByRequestedTime: (((data.reportedCases * 10) * 1024) * 0.02),
-  dollarsInFlight: (((((data.reportedCases * 10) * 1024) * 0.65) * 1.5) * 30)
-};
+export class Data {
+  constructor(data, num) {
+    this.currentlyInfected = (data.reportedCases * num);
+    this.totalHospitalBeds = data.totalHospitalBeds;
+    this.infectionsByRequestedTime = (this.currentlyInfected * 1024);
+    this.severeCasesByRequestedTime = (this.infectionsByRequestedTime * 0.15);
+  }
 
-const severeImpact = {
-  currentlyInfected: (data.reportedCases * 50),
-  infectionByRequestedTime: ((data.reportedCases * 10) * 1024),
-  casesByRequestedTime: (((data.reportedCases * 10) * 1024) * 0.15),
-  hospitalBedByRequestedTime: ((((data.reportedCases * 10) * 1024) * 0.15) * 0.35),
-  casesForICUByRequestedTime: (((data.reportedCases * 10) * 1024) * 0.05),
-  casesForVentilatorsByRequestedTime: (((data.reportedCases * 10) * 1024) * 0.02),
-  dollarsInFlight: (((((data.reportedCases * 10) * 1024) * 0.65) * 1.5) * 30)
-};
+  hospitalBedByRequestedTime() {
+    return ((this.totalHospitalBeds * 0.35) - this.severeCasesByRequestedTime);
+  }
 
-export default { data, impact, severeImpact };
+  casesForICUByRequestedTime() {
+    return ((this.infectionsByRequestedTime) * 0.05);
+  }
+
+  casesForVentilatorsByRequestedTime() {
+    return ((this.infectionsByRequestedTime) * 0.02);
+  }
+
+  dollarsInFlight() {
+    return ((((this.infectionsByRequestedTime) * 0.85) * 5.5) * 30);
+  }
+}
+ */
+/* const impact = new Data(estimate, 10, estimate.totalHospitalBeds);
+const severeImpact = new Data(estimate, 50, estimate.totalHospitalBeds);
+
+export { impact, severeImpact };
+ */
